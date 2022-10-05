@@ -33,11 +33,10 @@ resource "aws_subnet" "subnet_public" {
 resource "aws_route_table" "lloyd_rtb_public" {
     vpc_id = aws_vpc.lloyd-vpc.id
 
-    route = [ {
-    
+    route = {
       cidr_block = "0.0.0.0/0"
       gateway_id = aws_internet_gateway.lloyd_igw.id
-    } ]
+    }
 
     tags = {
       "Environment" = "var.envronment_tag"
