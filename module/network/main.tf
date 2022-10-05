@@ -1,8 +1,8 @@
 #aws VPC Resource
-resource "aws_vpc" "lloyd-vpc" {
-    cidr_block = var.cidr_vpc
-    enable_dns_support = true
-    enable_dns_hostnames = true
+resource "aws_vpc" "lloyd_vpc" {
+    cidr_block            = var.cidr_vpc
+    enable_dns_support    = true
+    enable_dns_hostnames  = true
 
     tags = {
         Environment = var.environment_tag
@@ -11,19 +11,19 @@ resource "aws_vpc" "lloyd-vpc" {
 
 #AWS Internet Gateway
 resource "aws_internet_gateway" "lloyd_igw" {
-    vpc_id = aws_vpc.lloyd-vpc.id
+    vpc_id                = aws_vpc.lloyd_vpc.id
 
     tags = {
-        Environment = var.environment_tag
+        Environment       = var.environment_tag
     } 
 }
 
 #AWS Subnet for VPC
 resource "aws_subnet" "subnet_public" {
-    vpc_id = aws_vpc.lloyd-vpc.id
-    cidr_block = var.cidr_subnet
-    map_public_ip_on_launch = true
-    availability_zone = var.availability_zone
+    vpc_id                    = aws_vpc.lloyd_vpc.id
+    cidr_block                = var.cidr_subnet
+    map_public_ip_on_launch   = true
+    availability_zone         = var.availability_zone
     tags = {
       "Environment" = "var.environment_tag"
     }
@@ -31,7 +31,7 @@ resource "aws_subnet" "subnet_public" {
 
 # AWS Route Table
 resource "aws_route_table" "lloyd_rtb_public" {
-    vpc_id = aws_vpc.lloyd-vpc.id
+    vpc_id = aws_vpc.lloyd_vpc.id
 
     route {
       cidr_block = "0.0.0.0/0"
@@ -53,7 +53,7 @@ resource "aws_route_table_association" "lloyd_rta_subnet_public" {
 #AWS Security group
 resource "aws_security_group" "lloyd_sg_22" {
     name = "lloyd_sg_22"
-    vpc_id = aws_vpc.lloyd-vpc.id
+    vpc_id = aws_vpc.lloyd_vpc.id
 
     ingress {
       from_port     = 22
