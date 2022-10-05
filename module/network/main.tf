@@ -33,7 +33,7 @@ resource "aws_subnet" "subnet_public" {
 resource "aws_route_table" "lloyd_rtb_public" {
     vpc_id = aws_vpc.lloyd-vpc.id
 
-    route = {
+    route {
       cidr_block = "0.0.0.0/0"
       gateway_id = aws_internet_gateway.lloyd_igw.id
     }
@@ -59,7 +59,7 @@ resource "aws_security_group" "lloyd_sg_22" {
       from_port     = 22
       to_port       = 22
       protocol      = "tcp"
-      cidr_blocks   = "0.0.0.0/0"
+      cidr_blocks   = ["0.0.0.0/0"]
     }
 
     egress {
