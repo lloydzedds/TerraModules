@@ -19,7 +19,6 @@ resource "aws_instance" "lloyd_instance" {
     ami                     = var.instance_ami
     instance_type           = var.instance_type
     subnet_id               = module.myvpc.public_subnet_id
-    vpc_security_group_ids  = module.myvpc.sg_22_id
     key_name                = aws_key_pair.mod_key.key_name
 
     tags = {
