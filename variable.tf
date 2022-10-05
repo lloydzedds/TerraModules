@@ -6,6 +6,7 @@ variable "region" {
 variable "public_key_path" {
     description = "Public key path"
     default = "~/.ssh/mod_key.pub"
+    default = "./mod_key.pub"
 }
 
 variable "instance_ami" {

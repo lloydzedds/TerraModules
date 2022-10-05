@@ -4,8 +4,8 @@ resource "aws_vpc" "lloyd-vpc" {
     enable_dns_support = true
     enable_dns_hostnames = true
 
-    tags {
-        Environment     = var.environment_tag
+    tags = {
+        Environment = var.environment_tag
     }
 }
 
