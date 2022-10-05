@@ -9,8 +9,14 @@ variable "public_key_path" {
 }
 
 variable "instance_ami" {
-    description = "Type for aws instance"
+    description = "AMI for aws instance"
     default = "ami-0efda064d1b5e46a5"
+}
+
+variable "instance_type" {
+    description = "Type for aws instance"
+    default = "t3.micro"
+  
 }
 
 variable "environment_tag" {
