@@ -55,14 +55,14 @@ resource "aws_security_group" "lloyd_sg_22" {
     name = "lloyd_sg_22"
     vpc_id = aws_vpc.lloyd-vpc.id
 
-    ingress = {
+    ingress {
       from_port     = 22
       to_port       = 22
       protocol      = "tcp"
       cidr_blocks   = "0.0.0.0/0"
     }
 
-    egress = {
+    egress {
       from_port     = 0
       to_port       = 0
       protocol      = "-1"
