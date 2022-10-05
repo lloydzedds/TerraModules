@@ -56,19 +56,17 @@ resource "aws_security_group" "lloyd_sg_22" {
     vpc_id = aws_vpc.lloyd-vpc.id
 
     ingress = {
-      cidr_blocks = "0.0.0.0/0"
-      description = "for ssh instance"
-      from_port = 22
-      protocol = "tcp"
-      to_port = 22
+      from_port     = 22
+      to_port       = 22
+      protocol      = "tcp"
+      cidr_blocks   = "0.0.0.0/0"
     }
 
     egress = {
-      cidr_blocks = "0.0.0.0/0"
-      description = "Public"
-      from_port = 0
-      protocol = "-1"
-      to_port = 0
+      from_port     = 0
+      to_port       = 0
+      protocol      = "-1"
+      cidr_blocks   = ["0.0.0.0/0"]
     }
     tags = {
       "Environment" = "var.environment_tag"

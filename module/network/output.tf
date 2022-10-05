@@ -9,5 +9,5 @@ output "public_subnet_id" {
 }
 
 output "sg_22_id" {
-    value = ["${aws_secutity_group.lloyd_sg_22.id}"]
+    value = aws_secutity_group.lloyd_sg_22.id
 }
