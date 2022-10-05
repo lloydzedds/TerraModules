@@ -1,7 +1,7 @@
 # Defining outputs to display
 
 output "vpc_id" {
- value = aws_vpc.lloyd-vpc.id
+ value = aws_vpc.lloyd_vpc.id
 }
 
 output "public_subnet_id" {
