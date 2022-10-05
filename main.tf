@@ -18,8 +18,8 @@ resource "aws_key_pair" "mod_key" {
 resource "aws_instance" "lloyd_instance" {
     ami = var.instance_ami
     instance_type = var.instance_type
-    subnet_id = aws_subnet.subnet_public.id
-    vpc_security_group_ids = aws_security_group.lloyd_sg_22.id
+    subnet_id = module.network.public_subnet_id
+    vpc_security_group_ids = ["${module.network.sg_22_id}"]
     key_name = aws_key_pair.mod_key.key_name
 
     tags = {
